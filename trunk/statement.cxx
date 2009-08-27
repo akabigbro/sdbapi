@@ -36,7 +36,7 @@ int Statement::Execute(SQLCHAR * statement) throw(SQLRETURN&)
 
 int Statement::getRowCount(void) throw(SQLRETURN&)
 {
-    SQLINTEGER rows;
+    SQLLEN rows;
     error = SQLRowCount(handle, &rows);
 
     if (SQL_SUCCESS != error && SQL_SUCCESS_WITH_INFO != error)
