@@ -11,7 +11,7 @@ Connection::Connection(void) throw(SQLRETURN&)
 {
     error = SQLAllocHandle(SQL_HANDLE_DBC, getEnvironmentHandle(), &handle);
 
-    if (SQL_SUCCESS != error && SQL_SUCCESS_WITH_INFO != error)
+    if (SQL_SUCCEEDED(error))
     {
         throw error;
     }
@@ -27,7 +27,7 @@ void Connection::Connect(SQLCHAR * server, SQLCHAR * user, SQLCHAR * password) t
 {
     error = SQLConnect(handle, server, SQL_NTS, user, SQL_NTS, password, SQL_NTS);
 
-    if (SQL_SUCCESS != error && SQL_SUCCESS_WITH_INFO != error)
+    if (SQL_SUCCEEDED(error))
     {
         throw error;
     }
