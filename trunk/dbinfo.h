@@ -12,6 +12,7 @@ namespace DB
     class DBInfo
     {
         public:
+            static bool CheckReturn(SQLSMALLINT type, SQLHANDLE & handle, SQLRETURN result);
             static void Output(SQLSMALLINT type, SQLHANDLE & handle);
     };
 
