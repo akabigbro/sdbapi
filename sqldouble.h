@@ -1,12 +1,12 @@
 #ifndef SQLDOUBLE_H
 #define SQLDOUBLE_H
 
-#include "sqlfield.h"
+#include "field.h"
 
 namespace DB
 {
 
-    class SqlDouble : public SqlField
+    class SqlDouble : public Field
     {
         private:
             double value;

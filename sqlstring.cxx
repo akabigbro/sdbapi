@@ -11,7 +11,7 @@ void SqlString::setString(const char * data)
 }
 
 SqlString::SqlString(const char * value)
-    : SqlField(SQL_C_CHAR), value(value)
+    : Field(SQL_C_CHAR), value(value)
 {
 }
 

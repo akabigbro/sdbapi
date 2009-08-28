@@ -2,12 +2,12 @@
 #define SQLSTRING_H
 
 #include <string>
-#include "sqlfield.h"
+#include "field.h"
 
 namespace DB
 {
 
-    class SqlString : public SqlField
+    class SqlString : public Field
     {
         private:
             std::string value;

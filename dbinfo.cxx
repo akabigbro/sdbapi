@@ -15,6 +15,9 @@ bool DBInfo::CheckReturn(SQLSMALLINT type, SQLHANDLE & handle, SQLRETURN result)
             Output(type, handle);
             check = true;
             break;
+        case SQL_STILL_EXECUTING:
+            std::cout << "still executing" << std::endl;
+            break;
         case SQL_ERROR:
             Output(type, handle);
             check = false;

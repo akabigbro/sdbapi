@@ -11,7 +11,7 @@ void SqlDate::setDateTime(struct tm * data)
 }
 
 SqlDate::SqlDate(struct tm * value)
-    : SqlField(SQL_C_TYPE_DATE)
+    : Field(SQL_C_TYPE_DATE)
 {
     memset(value, 0, sizeof(value));
 

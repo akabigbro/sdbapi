@@ -8,7 +8,7 @@ void SqlShort::setShortInt(short int data)
 }
 
 SqlShort::SqlShort(short int value)
-    : SqlField(SQL_C_SSHORT), value(value)
+    : Field(SQL_C_SSHORT), value(value)
 {
 }
 
