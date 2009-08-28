@@ -34,12 +34,7 @@ namespace DB
 
     class Field
     {
-        private:
-            SQLSMALLINT type;
         protected:
-            void setType(SQLSMALLINT type);
-            SQLSMALLINT getType(void);
-
             virtual void setString(const char * data);
             virtual void setShortInt(short int data);
             virtual void setUShortInt(unsigned short int data);
@@ -49,7 +44,7 @@ namespace DB
             virtual void setBinary(unsigned char * data);
             virtual void setDateTime(struct tm * data);
         public:
-            Field(SQLSMALLINT type);
+            Field(SQLCHAR * name, SQLSMALLINT type, SQLULEN size, SQLSMALLINT decimal, SQLSMALLINT nullable);
             virtual ~Field(void);
 
             void setValue(SQLCHAR * data);
