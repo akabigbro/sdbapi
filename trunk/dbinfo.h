@@ -1,5 +1,5 @@
-#ifndef ERROR_H
-#define ERROR_H
+#ifndef DBINFO_H
+#define DBINFO_H
 
 #include <iostream>
 #include <sql.h>
@@ -9,7 +9,7 @@
 namespace DB
 {
 
-    class Error
+    class DBInfo
     {
         public:
             static void Output(SQLSMALLINT type, SQLHANDLE & handle);
@@ -17,4 +17,4 @@ namespace DB
 
 };
 
-#endif//ERROR_H
+#endif//DBINFO_H

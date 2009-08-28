@@ -23,9 +23,9 @@ Connection::~Connection(void)
     SQLFreeHandle(SQL_HANDLE_DBC, handle);
 }
 
-void Connection::Connect(SQLCHAR * server, SQLCHAR * user, SQLCHAR * password) throw(SQLRETURN&)
+void Connection::Connect(const char * server, const char * user, const char * password) throw(SQLRETURN&)
 {
-    error = SQLConnect(handle, server, SQL_NTS, user, SQL_NTS, password, SQL_NTS);
+    error = SQLConnect(handle, (SQLCHAR *) server, SQL_NTS, (SQLCHAR *) user, SQL_NTS, (SQLCHAR *) password, SQL_NTS);
 
     if (SQL_SUCCEEDED(error))
     {
@@ -33,7 +33,7 @@ void Connection::Connect(SQLCHAR * server, SQLCHAR * user, SQLCHAR * password) t
     }
 }
 
-void Connection::OutputError(void)
+void Connection::OutputInfo(void)
 {
-    Error::Output(SQL_HANDLE_DBC, handle);
+    DBInfo::Output(SQL_HANDLE_DBC, handle);
 }

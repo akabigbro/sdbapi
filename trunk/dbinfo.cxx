@@ -1,8 +1,8 @@
-#include "error.h"
+#include "dbinfo.h"
 
 using namespace DB;
 
-void Error::Output(SQLSMALLINT type, SQLHANDLE & handle)
+void DBInfo::Output(SQLSMALLINT type, SQLHANDLE & handle)
 {
     SQLINTEGER index = 0;
     SQLINTEGER native;
@@ -17,7 +17,7 @@ void Error::Output(SQLSMALLINT type, SQLHANDLE & handle)
 
         if (SQL_SUCCEEDED(result))
         {
-            fprintf(stderr, "%s:%ld:%ld:%s\n", state, index, native, text);
+            fprintf(stderr, "%s:%d:%d:%s\n", state, index, native, text);
         }
     }
     while (SQL_SUCCESS == result);

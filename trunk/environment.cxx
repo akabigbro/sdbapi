@@ -31,7 +31,7 @@ Environment::~Environment(void)
     SQLFreeHandle(SQL_HANDLE_ENV, handle);
 }
 
-void Environment::OutputError(void)
+void Environment::OutputInfo(void)
 {
-    Error::Output(SQL_HANDLE_ENV, handle);
+    DBInfo::Output(SQL_HANDLE_ENV, handle);
 }
