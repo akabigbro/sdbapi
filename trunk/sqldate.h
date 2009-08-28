@@ -1,24 +1,25 @@
-#ifndef DATE_H
-#define DATE_H
+#ifndef SQLDATE_H
+#define SQLDATE_H
 
-#include "field.h"
+#include "sqlfield.h"
+#include <time.h>
 
 namespace DB
 {
 
-    class Date : public Field
+    class SqlDate : public SqlField
     {
         private:
             struct tm value;
         protected:
             void setDateTime(struct tm * data);
         public:
-            Date(struct tm * value);
-            ~Date(void);
+            SqlDate(struct tm * value);
+            ~SqlDate(void);
 
             struct tm * getValue(void);
     };
 
 };
 
-#endif//DATE_H
+#endif//SQLDATE_H

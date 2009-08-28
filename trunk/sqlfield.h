@@ -1,5 +1,5 @@
-#ifndef FIELD_H
-#define FIELD_H
+#ifndef SQLFIELD_H
+#define SQLFIELD_H
 
 #include "dbinfo.h"
 
@@ -32,7 +32,7 @@ SQL_C_TYPE_TIME     SQL_TIME_STRUCT     struct
 namespace DB
 {
 
-    class Field
+    class SqlField
     {
         private:
             int type;
@@ -48,8 +48,8 @@ namespace DB
             virtual void setBinary(unsigned char * data);
             virtual void setDateTime(struct tm * data);
         public:
-            Field(int type);
-            virtual ~Field(void);
+            SqlField(int type);
+            virtual ~SqlField(void);
 
             void setValue(SQLCHAR * data);
             void setValue(SQLSMALLINT data);
@@ -63,4 +63,4 @@ namespace DB
 
 };
 
-#endif//FIELD_H
+#endif//SQLFIELD_H

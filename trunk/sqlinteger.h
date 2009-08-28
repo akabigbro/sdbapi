@@ -1,24 +1,24 @@
-#ifndef INTEGER_H
-#define INTEGER_H
+#ifndef SQLINTEGER_H
+#define SQLINTEGER_H
 
-#include "field.h"
+#include "sqlfield.h"
 
 namespace DB
 {
     
-    class Integer : public Field
+    class SqlInteger : public SqlField
     {
         private:
             long int value;
         protected:
             void setLongInt(long int data);
         public:
-            Integer(long int value = 0);
-            ~Integer(void);
+            SqlInteger(long int value = 0);
+            ~SqlInteger(void);
 
             long int getValue(void);
     };
 
 };
 
-#endif//INTEGER_H
+#endif//SQLINTEGER_H

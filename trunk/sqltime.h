@@ -1,24 +1,25 @@
-#ifndef TIME_H
-#define TIME_H
+#ifndef SQLTIME_H
+#define SQLTIME_H
 
-#include "field.h"
+#include "sqlfield.h"
+#include <time.h>
 
 namespace DB
 {
 
-    class Time : public Field
+    class SqlTime : public SqlField
     {
         private:
             struct tm value;
         protected:
             void setDateTime(struct tm * data);
         public:
-            Time(struct tm * value);
-            ~Time(void);
+            SqlTime(struct tm * value);
+            ~SqlTime(void);
 
             struct tm * getValue(void);
     };
 
 };
 
-#endif//TIME_H
+#endif//SQLTIME_H

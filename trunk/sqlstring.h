@@ -1,25 +1,25 @@
-#ifndef STRING_H
-#define STRING_H
+#ifndef SQLSTRING_H
+#define SQLSTRING_H
 
 #include <string>
-#include "field.h"
+#include "sqlfield.h"
 
 namespace DB
 {
 
-    class String : public Field
+    class SqlString : public SqlField
     {
         private:
             std::string value;
         protected:
             void setString(const char * data);
         public:
-            String(const char * value = "");
-            ~String(void);
+            SqlString(const char * value = "");
+            ~SqlString(void);
 
             std::string getValue(void);
     };
 
 };
 
-#endif//STRING_H
+#endif//SQLSTRING_H
