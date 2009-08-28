@@ -1,12 +1,12 @@
 #ifndef SQLFLOAT_H
 #define SQLFLOAT_H
 
-#include "sqlfield.h"
+#include "field.h"
 
 namespace DB
 {
 
-    class SqlFloat : public SqlField
+    class SqlFloat : public Field
     {
         private:
             float value;

@@ -1,12 +1,12 @@
 #ifndef SQLUSHORT_H
 #define SQLUSHORT_H
 
-#include "sqlfield.h"
+#include "field.h"
 
 namespace DB
 {
 
-    class SqlUShort : public SqlField
+    class SqlUShort : public Field
     {
         private:
             unsigned short int value;

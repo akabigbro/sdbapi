@@ -2,6 +2,7 @@
 #define CONNECTION_H
 
 #include "environment.h"
+#include "result.h"
 
 namespace DB
 {
@@ -18,7 +19,7 @@ namespace DB
             ~Connection(void);
 
             void Connect(const char * server, const char * user, const char * password) throw(SQLRETURN&);
-            void OutputInfo(void);
+            Result * Execute(const char * query) throw(SQLRETURN&);
     };
 
 };

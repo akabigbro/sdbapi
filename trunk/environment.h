@@ -16,8 +16,6 @@ namespace DB
         public:
             Environment(void) throw(SQLRETURN&);
             ~Environment(void);
-
-            virtual void OutputInfo(void);
     };
 
 };

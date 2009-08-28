@@ -8,7 +8,7 @@ void SqlDouble::setDouble(double data)
 }
 
 SqlDouble::SqlDouble(double value)
-    : SqlField(SQL_C_DOUBLE), value(value)
+    : Field(SQL_C_DOUBLE), value(value)
 {
 }
 

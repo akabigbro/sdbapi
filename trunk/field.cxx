@@ -1,84 +1,89 @@
-#include "sqlfield.h"
+#include "field.h"
 
 using namespace DB;
 
-void SqlField::setType(int type)
+void Field::setType(SQLSMALLINT type)
 {
     this->type = type;
 }
 
-void SqlField::setString(const char * data)
+SQLSMALLINT Field::getType(void)
+{
+    return type;
+}
+
+void Field::setString(const char * data)
 {
 }
 
-void SqlField::setShortInt(short int data)
+void Field::setShortInt(short int data)
 {
 }
 
-void SqlField::setUShortInt(unsigned short int data)
+void Field::setUShortInt(unsigned short int data)
 {
 }
 
-void SqlField::setLongInt(long int data)
+void Field::setLongInt(long int data)
 {
 }
 
-void SqlField::setFloat(float data)
+void Field::setFloat(float data)
 {
 }
 
-void SqlField::setDouble(double data)
+void Field::setDouble(double data)
 {
 }
 
-void SqlField::setBinary(unsigned char * data)
+void Field::setBinary(unsigned char * data)
 {
 }
 
-void SqlField::setDateTime(struct tm * data)
+void Field::setDateTime(struct tm * data)
 {
 }
 
-SqlField::SqlField(int type)
+Field::Field(SQLSMALLINT type)
     : type(type)
 {
 }
 
-SqlField::~SqlField(void)
+Field::~Field(void)
 {
 }
 
-void SqlField::setValue(SQLCHAR * data)
+void Field::setValue(SQLCHAR * data)
 {
     setString((char *) data);
 }
 
-void SqlField::setValue(SQLSMALLINT data)
+void Field::setValue(SQLSMALLINT data)
 {
     setShortInt((short int) data);
 }
 
-void SqlField::setValue(SQLUSMALLINT data)
+void Field::setValue(SQLUSMALLINT data)
 {
     setUShortInt((unsigned short int) data);
 }
 
-void SqlField::setValue(SQLINTEGER data)
+void Field::setValue(SQLINTEGER data)
 {
     setLongInt((long int) data);
 }
 
-void SqlField::setValue(SQLREAL data)
+void Field::setValue(SQLREAL data)
 {
     setFloat((float) data);
 }
 
-void SqlField::setValue(SQLDOUBLE data)
+void Field::setValue(SQLDOUBLE data)
 {
     setDouble((double) data);
 }
 
-void SqlField::setValue(SQL_DATE_STRUCT * data)
+void Field::setValue(SQL_DATE_STRUCT * data)
 {
     struct tm date;
 
@@ -96,7 +101,7 @@ void SqlField::setValue(SQL_DATE_STRUCT * data)
     }
 }
 
-void SqlField::setValue(SQL_TIME_STRUCT * data)
+void Field::setValue(SQL_TIME_STRUCT * data)
 {
     struct tm time;
 

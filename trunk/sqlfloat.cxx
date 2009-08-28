@@ -8,7 +8,7 @@ void SqlFloat::setFloat(float data)
 }
 
 SqlFloat::SqlFloat(float value)
-    : SqlField(SQL_C_FLOAT), value(value)
+    : Field(SQL_C_FLOAT), value(value)
 {
 }
 

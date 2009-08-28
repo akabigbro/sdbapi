@@ -1,13 +1,13 @@
 #ifndef SQLTIME_H
 #define SQLTIME_H
 
-#include "sqlfield.h"
+#include "field.h"
 #include <time.h>
 
 namespace DB
 {
 
-    class SqlTime : public SqlField
+    class SqlTime : public Field
     {
         private:
             struct tm value;

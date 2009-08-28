@@ -8,7 +8,7 @@ void SqlUShort::setUShortInt(unsigned short int data)
 }
 
 SqlUShort::SqlUShort(unsigned short int value)
-    : SqlField(SQL_C_USHORT), value(value)
+    : Field(SQL_C_USHORT), value(value)
 {
 }
 

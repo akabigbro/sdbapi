@@ -11,7 +11,7 @@ void SqlTime::setDateTime(struct tm * data)
 }
 
 SqlTime::SqlTime(struct tm * value)
-    : SqlField(SQL_C_TYPE_TIME)
+    : Field(SQL_C_TYPE_TIME)
 {
     memset(value, 0, sizeof(value));
 

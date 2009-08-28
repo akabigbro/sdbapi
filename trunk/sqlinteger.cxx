@@ -8,7 +8,7 @@ void SqlInteger::setLongInt(long int data)
 }
 
 SqlInteger::SqlInteger(long int value)
-    : SqlField(SQL_C_SLONG), value(value)
+    : Field(SQL_C_SLONG), value(value)
 {
 }
 

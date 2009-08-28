@@ -33,7 +33,23 @@ void Connection::Connect(const char * server, const char * user, const char * pa
     }
 }
 
-void Connection::OutputInfo(void)
+Result * Connection::Execute(const char * query) throw(SQLRETURN&)
 {
-    DBInfo::Output(SQL_HANDLE_DBC, handle);
+    SQLHSTMT statement;
+
+    error = SQLAllocHandle(SQL_HANDLE_STMT, handle, &statement);
+
+    if (!DBInfo::CheckReturn(SQL_HANDLE_STMT, statement, error))
+    {
+        throw error;
+    }
+
+    error = SQLExecDirect(statement, (SQLCHAR *)query, SQL_NTS);
+
+    if (!DBInfo::CheckReturn(SQL_HANDLE_STMT, statement, error))
+    {
+        throw error;
+    }
+
+    return new Result(statement);
 }
