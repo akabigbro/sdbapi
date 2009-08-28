@@ -17,8 +17,8 @@ namespace DB
             Connection(void) throw(SQLRETURN&);
             ~Connection(void);
 
-            void Connect(SQLCHAR * server, SQLCHAR * user, SQLCHAR * password) throw(SQLRETURN&);
-            void OutputError(void);
+            void Connect(const char * server, const char * user, const char * password) throw(SQLRETURN&);
+            void OutputInfo(void);
     };
 
 };

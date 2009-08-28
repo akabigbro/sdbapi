@@ -1,7 +1,7 @@
 #ifndef ENVIRONMENT_H
 #define ENVIRONMENT_H
 
-#include "error.h"
+#include "dbinfo.h"
 
 namespace DB
 {
@@ -17,7 +17,7 @@ namespace DB
             Environment(void) throw(SQLRETURN&);
             ~Environment(void);
 
-            virtual void OutputError(void);
+            virtual void OutputInfo(void);
     };
 
 };
