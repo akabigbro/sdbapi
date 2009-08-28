@@ -1,24 +1,24 @@
-#ifndef SHORT_H
-#define SHORT_H
+#ifndef SQLSHORT_H
+#define SQLSHORT_H
 
-#include "field.h"
+#include "sqlfield.h"
 
 namespace DB
 {
 
-    class Short : public Field
+    class SqlShort : public SqlField
     {
         private:
             short int value;
         protected:
             void setShortInt(short int data);
         public:
-            Short(short int value = 0);
-            ~Short(void);
+            SqlShort(short int value = 0);
+            ~SqlShort(void);
 
             short int getValue(void);
     };
 
 };
 
-#endif//SHORT_H
+#endif//SQLSHORT_H

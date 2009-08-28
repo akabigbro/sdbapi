@@ -1,17 +1,17 @@
-#include "date.h"
+#include "sqldate.h"
 #include <string.h>
 
 using namespace DB;
 
-void Date::setDateTime(struct tm * data)
+void SqlDate::setDateTime(struct tm * data)
 {
     value.tm_year = data->tm_year;
     value.tm_mon = data->tm_mon;
     value.tm_mday = data->tm_mday;
 }
 
-Date::Date(struct tm * value)
-    : Field(SQL_C_TYPE_DATE)
+SqlDate::SqlDate(struct tm * value)
+    : SqlField(SQL_C_TYPE_DATE)
 {
     memset(value, 0, sizeof(value));
 
@@ -20,11 +20,11 @@ Date::Date(struct tm * value)
     this->value.tm_mday = value->tm_mday;
 }
 
-Date::~Date(void)
+SqlDate::~SqlDate(void)
 {
 }
 
-struct tm * Date::getValue(void)
+struct tm * SqlDate::getValue(void)
 {
     return &value;
 }

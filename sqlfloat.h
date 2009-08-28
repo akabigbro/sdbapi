@@ -1,24 +1,24 @@
-#ifndef FLOAT_H
-#define FLOAT_H
+#ifndef SQLFLOAT_H
+#define SQLFLOAT_H
 
-#include "field.h"
+#include "sqlfield.h"
 
 namespace DB
 {
 
-    class Float : public Field
+    class SqlFloat : public SqlField
     {
         private:
             float value;
         protected:
             void setFloat(float data);
         public:
-            Float(float value = 0.0f);
-            ~Float(void);
+            SqlFloat(float value = 0.0f);
+            ~SqlFloat(void);
 
             float getValue(void);
     };
 
 };
 
-#endif//FLOAT_H
+#endif//SQLFLOAT_H

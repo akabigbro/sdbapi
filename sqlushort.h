@@ -1,24 +1,24 @@
-#ifndef USHORT_H
-#define USHORT_H
+#ifndef SQLUSHORT_H
+#define SQLUSHORT_H
 
-#include "field.h"
+#include "sqlfield.h"
 
 namespace DB
 {
 
-    class UShort : public Field
+    class SqlUShort : public SqlField
     {
         private:
             unsigned short int value;
         protected:
             void setUShortInt(unsigned short int value);
         public:
-            UShort(unsigned short int value = 0);
-            ~UShort(void);
+            SqlUShort(unsigned short int value = 0);
+            ~SqlUShort(void);
 
             unsigned short int getValue(void);
     };
 
 };
 
-#endif//USHORT_H
+#endif//SQLUSHORT_H
