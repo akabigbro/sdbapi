@@ -2,16 +2,6 @@
 
 using namespace DB;
 
-void Field::setType(SQLSMALLINT type)
-{
-    this->type = type;
-}
-
-SQLSMALLINT Field::getType(void)
-{
-    return type;
-}
-
 void Field::setString(const char * data)
 {
 }
@@ -44,8 +34,8 @@ void Field::setDateTime(struct tm * data)
 {
 }
 
-Field::Field(SQLSMALLINT type)
-    : type(type)
+Field::Field(SQLCHAR * name, SQLSMALLINT type, SQLULEN size, SQLSMALLINT decimal, SQLSMALLINT nullable);
+    : name(name), type(type), size(size), decimal(decimal), nullable(nullable)
 {
 }
 
