@@ -1,7 +1,7 @@
 #ifndef RESULT_H
 #define RESULT_H
 
-#include "dbinfo.h"
+#include "statement.h"
 
 namespace DB
 {
@@ -10,11 +10,9 @@ namespace DB
     {
         private:
             SQLRETURN error;
-            SQLHSTMT handle;
-        protected:
-            SQLHSTMT & getStatementHandle(void);
+            Statement * statement;
         public:
-            Result(SQLHSTMT handle);
+            Result(Statement * statement);
             ~Result(void);
 
             int getRowCount(void) throw(SQLRETURN&);
