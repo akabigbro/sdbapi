@@ -21,3 +21,8 @@ int Result::getColumnCount(void) throw(SQLRETURN&)
 {
     return statement->getColumnCount();
 }
+
+RecordSet * Result::getRecordSet(void)
+{
+    return new RecordSet(statement);
+}

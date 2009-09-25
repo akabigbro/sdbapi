@@ -2,6 +2,7 @@
 #define RESULT_H
 
 #include "statement.h"
+#include "recordset.h"
 
 namespace DB
 {
@@ -17,6 +18,8 @@ namespace DB
 
             int getRowCount(void) throw(SQLRETURN&);
             int getColumnCount(void) throw(SQLRETURN&);
+
+            RecordSet * getRecordSet(void);
     };
 
 };
