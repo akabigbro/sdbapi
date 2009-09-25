@@ -9,14 +9,15 @@ Result::Result(Statement * statement)
 
 Result::~Result(void)
 {
+    delete statement;
 }
 
 int Result::getRowCount(void) throw(SQLRETURN&)
 {
-    return Statement->getRowCount();
+    return statement->getRowCount();
 }
 
 int Result::getColumnCount(void) throw(SQLRETURN&)
 {
-    return Statement->getColumnCount();
+    return statement->getColumnCount();
 }
