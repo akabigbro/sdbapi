@@ -10,7 +10,7 @@ namespace DB
     {
         private:
             SQLRETURN error;
-            SQLHENV handle;
+            SQLHENV henv;
         protected:
             SQLHENV & getEnvironmentHandle(void);
         public:
