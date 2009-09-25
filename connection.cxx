@@ -2,16 +2,11 @@
 
 using namespace DB;
 
-SQLHDBC & Connection::getConnectionHandle(void)
-{
-    return handle;
-}
-
 Connection::Connection(void) throw(SQLRETURN&)
 {
-    error = SQLAllocHandle(SQL_HANDLE_DBC, getEnvironmentHandle(), &handle);
+    error = SQLAllocHandle(SQL_HANDLE_DBC, getEnvironmentHandle(), &hdbc);
 
-    if (!DBInfo::CheckReturn(SQL_HANDLE_DBC, handle, error))
+    if (!DBInfo::CheckReturn(SQL_HANDLE_DBC, hdbc, error))
     {
         throw error;
     }
@@ -19,36 +14,36 @@ Connection::Connection(void) throw(SQLRETURN&)
 
 Connection::~Connection(void)
 {
-    SQLDisconnect(handle);
-    SQLFreeHandle(SQL_HANDLE_DBC, handle);
+    SQLDisconnect(hdbc);
+    SQLFreeHandle(SQL_HANDLE_DBC, hdbc);
 }
 
-void Connection::Connect(const char * server, const char * user, const char * password) throw(SQLRETURN&)
+void Connection::Connect(std::string server, std::string user, std::string password) throw(SQLRETURN&)
 {
-    error = SQLConnect(handle, (SQLCHAR *) server, SQL_NTS, (SQLCHAR *) user, SQL_NTS, (SQLCHAR *) password, SQL_NTS);
+    error = SQLConnect(hdbc, (SQLCHAR *) server.c_str(), SQL_NTS, (SQLCHAR *) user.c_str(), SQL_NTS, (SQLCHAR *) password.c_str(), SQL_NTS);
 
-    if (!DBInfo::CheckReturn(SQL_HANDLE_DBC, handle, error))
+    if (!DBInfo::CheckReturn(SQL_HANDLE_DBC, hdbc, error))
     {
         throw error;
     }
 }
 
-Result * Connection::Execute(const char * query) throw(SQLRETURN&)
+Result * Connection::Execute(std::string query) throw(SQLRETURN&)
 {
-    SQLHSTMT statement;
+    Statement * statement = NULL;
 
-    error = SQLAllocHandle(SQL_HANDLE_STMT, handle, &statement);
-
-    if (!DBInfo::CheckReturn(SQL_HANDLE_STMT, statement, error))
+    try
     {
-        throw error;
+        statement = new Statement(hdbc);
+        statement->Execute(query);
     }
-
-    error = SQLExecDirect(statement, (SQLCHAR *)query, SQL_NTS);
-
-    if (!DBInfo::CheckReturn(SQL_HANDLE_STMT, statement, error))
+    catch (int & ex)
     {
-        throw error;
+        if (NULL != statement)
+        {
+            delete statement;
+        }
+        throw ex;
     }
 
     return new Result(statement);
