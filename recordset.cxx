@@ -2,6 +2,11 @@
 
 using namespace DB;
 
+RecordSet::RecordSet(RecordSet & recordSet)
+    : statement(recordSet.statement)
+{
+}
+
 RecordSet::RecordSet(Statement * statement)
     : statement(statement)
 {
@@ -11,26 +16,46 @@ RecordSet::~RecordSet(void)
 {
 }
 
-void Next(void) throw(SQLRETURN&)
+RecordSet RecordSet::operator=(RecordSet & rs)
 {
+    statement = rs.statement;
 }
 
-void Prior(void) throw(SQLRETURN&)
+bool RecordSet::Next(void) throw(SQLRETURN&)
 {
+    bool more = statement->MoreResults();
+
+    if (more)
+    {
+        statement->MoveCursor(SQL_FETCH_NEXT);
+    }
+
+    return more;
 }
 
-void First(void) throw(SQLRETURN&)
+bool RecordSet::Prior(void) throw(SQLRETURN&)
 {
+    statement->MoveCursor(SQL_FETCH_PRIOR);
 }
 
-void Last(void) throw(SQLRETURN&)
+bool RecordSet::First(void) throw(SQLRETURN&)
 {
+    statement->MoveCursor(SQL_FETCH_FIRST);
 }
 
-void Absolute(int index) throw(SQLRETURN&)
+bool RecordSet::Last(void) throw(SQLRETURN&)
 {
+    statement->MoveCursor(SQL_FETCH_LAST);
 }
 
-void Relative(int offset) throw(SQLRETURN&)
+std::map<std::string, std::string> RecordSet::getCurrent(void) throw(SQLRETURN&)
 {
+    std::map<std::string, std::string> record;
+
+    for (int index = 1; index <= statement->getColumnCount(); index++)
+    {
+        record[statement->getColumnName(index)] = statement->getString(index);
+    }
+
+    return record;
 }
