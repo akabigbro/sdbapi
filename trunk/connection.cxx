@@ -45,6 +45,6 @@ Result * Connection::Execute(std::string query) throw(SQLRETURN&)
         }
         throw ex;
     }
-
+    
     return new Result(statement);
 }

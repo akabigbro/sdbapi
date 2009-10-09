@@ -13,8 +13,11 @@ namespace DB
             SQLRETURN error;
             Statement * statement;
         public:
+            Result(Result & result);
             Result(Statement * statement);
             ~Result(void);
+
+            Result operator=(Result & result);
 
             int getRowCount(void) throw(SQLRETURN&);
             int getColumnCount(void) throw(SQLRETURN&);

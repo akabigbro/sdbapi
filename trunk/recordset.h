@@ -1,6 +1,7 @@
 #ifndef RECORDSET_H
 #define RECORDSET_H
 
+#include <map>
 #include "statement.h"
 
 namespace DB
@@ -12,15 +13,19 @@ namespace DB
             SQLRETURN error;
             Statement * statement;
         public:
+            RecordSet(void) {};
+            RecordSet(RecordSet & recordSet);
             RecordSet(Statement * statement);
             ~RecordSet(void);
 
-            void Next(void) throw(SQLRETURN&);
-            void Prior(void) throw(SQLRETURN&);
-            void First(void) throw(SQLRETURN&);
-            void Last(void) throw(SQLRETURN&);
-            void Absolute(int index) throw(SQLRETURN&);
-            void Relative(int offset) throw(SQLRETURN&);
+            RecordSet operator=(RecordSet & rs);
+
+            bool Next(void) throw(SQLRETURN&);
+            bool Prior(void) throw(SQLRETURN&);
+            bool First(void) throw(SQLRETURN&);
+            bool Last(void) throw(SQLRETURN&);
+
+            std::map<std::string, std::string> getCurrent(void) throw(SQLRETURN&);
     };
 
 };
