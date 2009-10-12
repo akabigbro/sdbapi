@@ -2,11 +2,6 @@
 
 using namespace DB;
 
-RecordSet::RecordSet(RecordSet & recordSet)
-    : statement(recordSet.statement)
-{
-}
-
 RecordSet::RecordSet(Statement * statement)
     : statement(statement)
 {
@@ -14,11 +9,6 @@ RecordSet::RecordSet(Statement * statement)
 
 RecordSet::~RecordSet(void)
 {
-}
-
-RecordSet RecordSet::operator=(RecordSet & rs)
-{
-    statement = rs.statement;
 }
 
 bool RecordSet::Next(void) throw(SQLRETURN&)
