@@ -13,12 +13,8 @@ namespace DB
             SQLRETURN error;
             Statement * statement;
         public:
-            RecordSet(void) {};
-            RecordSet(RecordSet & recordSet);
             RecordSet(Statement * statement);
             ~RecordSet(void);
-
-            RecordSet operator=(RecordSet & rs);
 
             bool Next(void) throw(SQLRETURN&);
             bool Prior(void) throw(SQLRETURN&);
