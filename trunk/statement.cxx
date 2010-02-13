@@ -68,7 +68,7 @@ void Statement::Execute(std::string query) throw(SQLRETURN&)
 
 int Statement::getRowCount(void) throw(SQLRETURN&)
 {
-    SQLINTEGER count;
+    SQLLEN count;
 
     error = SQLRowCount(hstmt, &count);
 
