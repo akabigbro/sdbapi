@@ -16,10 +16,12 @@ namespace DB
             RecordSet(Statement * statement);
             ~RecordSet(void);
 
+            bool Fetch(void) throw(SQLRETURN&);
             bool Next(void) throw(SQLRETURN&);
             bool Prior(void) throw(SQLRETURN&);
             bool First(void) throw(SQLRETURN&);
             bool Last(void) throw(SQLRETURN&);
+            bool More(void) throw(SQLRETURN&);
 
             std::map<std::string, std::string> getCurrent(void) throw(SQLRETURN&);
     };

@@ -46,7 +46,19 @@ bool Statement::MoreResults(void) throw(SQLRETURN&)
     return (SQL_NO_DATA != error);
 }
 
-void Statement::MoveCursor(SQLSMALLINT orientation, SQLLEN offset) throw(SQLRETURN&)
+bool Statement::Fetch(void) throw(SQLRETURN&)
+{
+    error = SQLFetch(hstmt);
+
+    if (!DBInfo::CheckReturn(SQL_HANDLE_STMT, hstmt, error))
+    {
+        throw error;
+    }
+
+    return (SQL_NO_DATA != error);
+}
+
+bool Statement::MoveCursor(SQLSMALLINT orientation, SQLLEN offset) throw(SQLRETURN&)
 {
     error = SQLFetchScroll(hstmt, orientation, offset);
 
@@ -54,6 +66,8 @@ void Statement::MoveCursor(SQLSMALLINT orientation, SQLLEN offset) throw(SQLRETU
     {
         throw error;
     }
+
+    return (SQL_NO_DATA != error);
 }
 
 void Statement::Execute(std::string query) throw(SQLRETURN&)

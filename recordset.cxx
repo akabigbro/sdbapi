@@ -11,31 +11,34 @@ RecordSet::~RecordSet(void)
 {
 }
 
+bool RecordSet::Fetch(void) throw(SQLRETURN&)
+{
+    return statement->Fetch();
+}
+
 bool RecordSet::Next(void) throw(SQLRETURN&)
 {
-    bool more = statement->MoreResults();
-
-    if (more)
-    {
-        statement->MoveCursor(SQL_FETCH_NEXT);
-    }
-
-    return more;
+    return statement->MoveCursor(SQL_FETCH_NEXT);
 }
 
 bool RecordSet::Prior(void) throw(SQLRETURN&)
 {
-    statement->MoveCursor(SQL_FETCH_PRIOR);
+    return statement->MoveCursor(SQL_FETCH_PRIOR);
 }
 
 bool RecordSet::First(void) throw(SQLRETURN&)
 {
-    statement->MoveCursor(SQL_FETCH_FIRST);
+    return statement->MoveCursor(SQL_FETCH_FIRST);
 }
 
 bool RecordSet::Last(void) throw(SQLRETURN&)
 {
-    statement->MoveCursor(SQL_FETCH_LAST);
+    return statement->MoveCursor(SQL_FETCH_LAST);
+}
+
+bool RecordSet::More(void) throw(SQLRETURN&)
+{
+    return statement->MoreResults();
 }
 
 std::map<std::string, std::string> RecordSet::getCurrent(void) throw(SQLRETURN&)

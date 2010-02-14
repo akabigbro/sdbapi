@@ -21,7 +21,8 @@ namespace DB
             ~Statement(void);
     
             bool MoreResults(void) throw(SQLRETURN&);
-            void MoveCursor(SQLSMALLINT orientation, SQLLEN offset = 0) throw(SQLRETURN&);
+            bool Fetch(void) throw(SQLRETURN&);
+            bool MoveCursor(SQLSMALLINT orientation, SQLLEN offset = 0) throw(SQLRETURN&);
             void Execute(std::string query) throw(SQLRETURN&);
             int getRowCount(void) throw(SQLRETURN&);
             int getColumnCount(void) throw(SQLRETURN&);
