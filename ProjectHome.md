@@ -1,0 +1,1 @@
+A simple unixODBC type database connection in C++
